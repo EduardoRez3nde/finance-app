@@ -8,11 +8,15 @@
     "@testing-library/user-event": "^13.2.1",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
+    "@types/react": "^19.0.2",
     "@types/react-dom": "^18.0.0",
+    "axios": "^1.7.9",
+    "miragejs": "^0.1.48",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-modal": "^3.16.3",
     "react-scripts": "5.0.1",
+    "styled-components": "^6.1.13",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
@@ -39,5 +43,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react-modal": "^3.16.3",
+    "@types/react-router-dom": "^5.3.3"
   }
 }
