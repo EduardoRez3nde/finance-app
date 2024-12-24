@@ -1,3 +1,4 @@
+import { transparentize } from "polished";
 import styled from "styled-components";
 
 
@@ -30,26 +31,42 @@ export const Container = styled.form`
     h2 {
         margin-bottom: 10px;
     }
-
 `
 
 export const TypeTransactionContainer = styled.div`
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 10px;
-
-    button {
-        width: 100%;
-        padding: 5px;
-        border: 0;
-        border-radius: 5px;
-
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        align-items: center;
-    }
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;    
 `
 
+interface RadioProps {
+    $isActive: boolean;
+    $colorActive: 'green' | 'red';
+}
+
+const colors = {
+    green: '#33CC95',
+    red: '#e52e4d'
+}
+
+export const Button = styled.button<RadioProps>`
+    
+    height: 3rem;
+    border-radius: 0.24rem;
+    border: 1px solid #d7d7d7;
+    background: transparent;
+    transition: border-color 0.2s; 
+    
+    background: ${(props) => props.$isActive
+     ? transparentize(0.8, colors[props.$colorActive])
+     : 'transparent'};
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.40rem;
+     
+    &:hover {
+        border-color: #a5a5a5;
+    }  
+`

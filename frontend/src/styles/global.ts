@@ -56,14 +56,12 @@ export const GlobalStyle = createGlobalStyle`
         display: flex;
         justify-content: center;
         align-items: center;
-
-        
     }
 
     .custom-modal-content {
         background: var(--background);
-        width: 100%;
-        max-width: 575px;
+        width: 90%;
+        max-width: 500px;
         border-radius: 0.25rem;
         position: relative;
     }

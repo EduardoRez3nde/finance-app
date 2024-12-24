@@ -1,14 +1,11 @@
-import { useEffect } from "react";
 import { Container } from "./styles";
-import { instance } from "../../services/instanceAxios";
+import { currencyFormatter, dateFormatter } from "../../utils/formatters";
+import { useTransaction } from "../hooks/useTransaction";
 
 
 export const TransactionTable = () => {
 
-
-    useEffect(() => {
-        instance.get('offers').then(response => console.log(response.data));
-    }, []);
+    const { transactions } = useTransaction();
 
     return (
         <Container>
@@ -21,34 +18,18 @@ export const TransactionTable = () => {
                         <th>data</th>
                     </tr>
                 </thead>
-
                 <tbody>
-                    <tr>
-                        <td className="title">Desenvoler de Sites</td>
-                        <td className="deposit">R$ 12.000,00</td>
-                        <td>vendas</td>
-                        <td>13/04/2021</td>
-                    </tr>
-                    <tr>
-                        <td className="title">Desenvoler de Sites</td>
-                        <td>R$ 12.000,00</td>
-                        <td>vendas</td>
-                        <td>13/04/2021</td>
-                    </tr>
-                    <tr>
-                        <td className="title">aluguel</td>
-                        <td className="withdraw">R$ -600,00</td>
-                        <td>vendas</td>
-                        <td>13/04/2021</td>
-                    </tr>
-                    <tr>
-                        <td className="title">Desenvoler de Sites</td>
-                        <td>R$ 12.000,00</td>
-                        <td>vendas</td>
-                        <td>13/04/2021</td>
-                    </tr>
+                    { transactions.map(transaction => (
+                        <tr key={transaction.id}>
+                            <td className="title">{ transaction.title }</td>
+                            <td className={ transaction.type }> { currencyFormatter(transaction.amount) }</td>
+                            <td>{ transaction.type }</td>
+                            <td>{ dateFormatter(transaction.createdAt) }</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </Container>
     );
 }
+
